@@ -1,0 +1,15 @@
+
+#include<stdio.h>
+
+int change(char c)
+{
+	char *p;
+	p = &c;
+	*p=c+'a'-'A';
+	return *p;
+}
+
+int main()
+{
+	printf("%c\n",change('H'));
+}
