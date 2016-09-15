@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void permutaciones(char *conjunto, size_t card, size_t elem);
+
+int main()
+{
+   	char conjunto[] = "abc";
+   	size_t card = sizeof conjunto - 1;
+   
+   	permutaciones(conjunto, card, 0);
+   
+   	return EXIT_SUCCESS;
+}
+
+void permutaciones(char *conjunto, size_t card, size_t elem)
+{
+   	if (card > 1){
+    	int i;
+     
+      	permutaciones(conjunto, card - 1, elem + 1);
+     
+      	for (i = 1; i < card; i++){
+         	char temp;
+         
+         	temp = conjunto[elem + i];
+         	memmove(conjunto + elem + 1, conjunto + elem, i);
+         	conjunto[elem] = temp;
+         
+         	permutaciones(conjunto, card - 1, elem + 1);
+         
+         	memmove(conjunto + elem, conjunto + elem + 1, i);
+         	conjunto[elem + i] = temp;
+    	}
+  	}
+	else
+		puts(conjunto);
+}
