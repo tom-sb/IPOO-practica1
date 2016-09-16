@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void permutaciones(char *conjunto, int n, int pp);
+void intercambio(char *pa, char *pb);
+
+
+int main()
+{
+   	int n,i;
+
+	i=0;
+	printf("cuantos elementos ingresará:\n");
+	scanf("%i",&n);
+	printf("ingresa los elementos...\n");
+	char conjunto[n+1],a;
+	
+	//ingreso de datos con for
+	while(i<=n-1)
+	{
+		scanf("%c",&a);
+		conjunto[i] = a;
+		i++;
+	}
+	
+	printf("%s\n",conjunto);
+	
+   	//permutaciones(conjunto, n, 0);
+   
+   	return 0;
+}
+
+void permutaciones(char *conjunto, int n, int pp)//paramt:conjunt,n=len,pp=punto-de-partida
+{
+	int i;
+
+   	if (n > 1)
+	{   
+      	permutaciones(conjunto, n - 1, pp + 1);   
+      	for (i = 1; i < n; i++)
+		{
+         	 
+			intercambio(&conjunto[pp + i], &conjunto[pp]);
+         	
+         	permutaciones(conjunto, n - 1, pp + 1);
+
+			intercambio(&conjunto[pp], &conjunto[pp+i]);
+
+    	}
+
+  	}
+	else
+
+		printf("%s\n",conjunto);
+}
+
+void intercambio(char *pa, char *pb)
+{
+	char temp;
+	temp=*pa;
+	*pa=*pb;
+	*pb=temp;
+}
