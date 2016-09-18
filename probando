@@ -1,16 +1,15 @@
 #include <stdio.h>
 
-
 void permutaciones(char *conjunto, int n, int pp);
 void intercambio(char *pa, char *pb);
-int len(char s[]);
+int len(char *s);
 
 int main()
 {	
 	char conjunto[15];
 	printf("ingresa los elementos...\n");
 	scanf("%s",conjunto);
-	printf("\nlas permutaciones son:");
+	printf("\nlas permutaciones son:\n");
 	permutaciones(conjunto,len(conjunto), 0);
    
    	return 0;
@@ -21,13 +20,13 @@ void permutaciones(char *conjunto, int n, int pp)
 	int i;
    	if (n > 1)
 	{   
-      		permutaciones(conjunto, n - 1, pp + 1);   
-      		for (i = 1; i < n; i++)
-			{        	 
-				intercambio(&conjunto[pp + i], &conjunto[pp]);        	
-         			permutaciones(conjunto, n - 1, pp + 1);
-				intercambio(&conjunto[pp], &conjunto[pp+i]);
-    			}
+      	permutaciones(conjunto, n - 1, pp + 1);   
+      	for (i = 1; i < n; i++)
+		{        	 
+			intercambio(&conjunto[pp + i], &conjunto[pp]);        	
+         	permutaciones(conjunto, n - 1, pp + 1);
+			intercambio(&conjunto[pp], &conjunto[pp+i]);
+    	}
   	}
 	else
 		printf("%s\n",conjunto);
@@ -36,17 +35,14 @@ void permutaciones(char *conjunto, int n, int pp)
 
 void intercambio(char *pa, char *pb)
 {
-	char temp;
-	temp=*pa;
+	char temp=*pa;
 	*pa=*pb;
 	*pb=temp;
 }
 
-int len(char s[])
+int len(char *s)
 {
-	int i;
-	i=0;
-	while(s[i]!='\0')
-		++i;
-	return i;
+	int cont=0;
+	for(s;*s;s++) cont++;
+	return cont;
 }
