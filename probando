@@ -20,13 +20,13 @@ void permutaciones(char *conjunto, int n, int pp)
 	int i;
    	if (n > 1)
 	{   
-      	permutaciones(conjunto, n - 1, pp + 1);   
-      	for (i = 1; i < n; i++)
+      		permutaciones(conjunto, n - 1, pp + 1);   
+      		for (i = 1; i < n; i++)
 		{        	 
 			intercambio(&conjunto[pp + i], &conjunto[pp]);        	
-         	permutaciones(conjunto, n - 1, pp + 1);
+         		permutaciones(conjunto, n - 1, pp + 1);
 			intercambio(&conjunto[pp], &conjunto[pp+i]);
-    	}
+    		}
   	}
 	else
 		printf("%s\n",conjunto);
