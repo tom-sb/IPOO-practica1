@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <string.h>
 
-void revert(char str[], int size)
+void revert(char str[], int n)
 {
-    if (size!=EOF)
+    if (n!=EOF)
     {
-        printf("%c",str[size]);
-        revert(str,size-1);
+        printf("%c",str[n]);
+        revert(str,n-1);
     }
+    printf("\n");
 }
 int main()
 {
