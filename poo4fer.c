@@ -1,5 +1,15 @@
 #include <stdio.h>
-#include <string.h>
+
+void revert(char cad[], int n);
+int leni(char *s);
+
+int main()
+{
+    char palabra[]="hola";
+    revert(palabra,leni(palabra));
+    return 0;
+}
+
 
 void revert(char cad[], int n)
 {
@@ -10,9 +20,10 @@ void revert(char cad[], int n)
     }
     printf("\n");
 }
-int main()
+
+int leni(char *s)
 {
-    char palabra[]="hola";
-    revert(palabra,strlen(palabra));
-    return 0;
+   int cont=0;
+   for(;*s;s++) cont++;
+   return cont;
 }
