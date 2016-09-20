@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 
-void revert(char str[], int n)
+void revert(char cad[], int n)
 {
     if (n!=EOF)
     {
-        printf("%c",str[n]);
-        revert(str,n-1);
+        printf("%c",cad[n]);
+        revert(cad,n-1);
     }
     printf("\n");
 }
